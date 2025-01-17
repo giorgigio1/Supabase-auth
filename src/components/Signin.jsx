@@ -16,10 +16,14 @@ const Signin = () => {
     setLoading(true);
     try {
       const result = await signInUser(email, password);
+      console.log("@@@res", result);
       if (result.success) {
         navigate("/dashboard");
+      } else {
+        setError(result.error.message);
       }
     } catch (err) {
+      console.log("@@@@errror!!!1", err);
       setError("an error occurred");
     } finally {
       setLoading(false);
@@ -49,7 +53,7 @@ const Signin = () => {
           <button className="mt-6" type="submit">
             Sign in
           </button>
-          {error && <p className="text-red-500">{error}</p>}
+          {error && <p className="text-red-500 text-xl mt-3">{error}!</p>}
         </div>
       </form>
     </div>

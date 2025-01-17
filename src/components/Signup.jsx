@@ -18,6 +18,8 @@ const Signup = () => {
       const result = await signUpNewUser(email, password);
       if (result.success) {
         navigate("/dashboard");
+      } else {
+        setError(result.error.message);
       }
     } catch (err) {
       setError("an error occurred");
@@ -49,7 +51,7 @@ const Signup = () => {
           <button className="mt-6" type="submit">
             Sign Up
           </button>
-          {error && <p className="text-red-500">{error}</p>}
+          {error && <p className="text-red-500 text-xl mt-3">{error}</p>}
         </div>
       </form>
     </div>
